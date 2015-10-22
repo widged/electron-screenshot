@@ -6,7 +6,7 @@ var remote = require('' + 'remote');
 captureList([
 	"http://google.com",
   "http://github.com"
-], {snapDelay: 5000}, function(url, img) {
+], {snapDelay: 2000}, function(url, img) {
 	var png = img.toPng();
 	var sha = sha1(url);
 	var filename = `snapshots/raw_${sha}.png`;
@@ -42,6 +42,7 @@ function captureList(urls, {snapDelay}, onSnapped) {
 			if(urls.length) {
 				loadUrlInSnapWindow(urls.shift());
 			} else {
+				win.close(); win = null;
 				console.log('[DONE]')
 			}
 		});

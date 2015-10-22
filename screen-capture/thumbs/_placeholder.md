@@ -1,0 +1,1 @@
+thumbnails get saved here.
